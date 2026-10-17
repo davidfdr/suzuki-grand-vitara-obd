@@ -1,0 +1,24 @@
+3E -> 7E  ATRV 14.0V
+== backup of readable records
+  21 08 (70 bytes): 02 95 31 20 95 04 61 13 20 00 20 FF FF FF 14 00 8B 0C FF FF FF FF A0 84 00 62 47 FF FF FF FF FF EB EA FF FF FF FF E5 E4 00 FF FF FF 38 39 02 FF FF 00 FF FF FF FF FF FF FF FF FF FF 00 02 06 FF FF FF FF FF FF FF
+  21 20 (11 bytes): 25 06 03 00 FF FF FF FF FF FF FF
+  21 21 (11 bytes): 42 00 03 08 E0 03 06 00 FF FF FF
+  21 80 (70 bytes): 02 95 31 20 95 04 61 14 00 8B 0C FF FF FF FF 97 9F 84 00 62 47 FF FF FF FF 4F FF 03 FF FF FF FF 00 03 FF FF FF FF 02 60 FF FF 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 00 FF 06 FF FF FF FF 12 91 00
+  21 A1 (30 bytes): 0A 04 08 08 14 08 3C FF FF FF FF FF FF FF FF 00 00 00 00 00 FF FF FF FF FF FF FF FF FF FF
+== stage 1: write each record back unchanged
+  3B 20 <11 bytes unchanged> -> 7F 3B 22
+  3B 21 <11 bytes unchanged> -> 7F 3B 22
+  3B A1 <30 bytes unchanged> -> 7F 3B 12
+  3B 80 <70 bytes unchanged> -> ?
+  3B 08 <70 bytes unchanged> -> ?
+== stage 2: record 08 with setpoint byte 7 = 08 (18 C), rest unchanged
+  3B 08 <setpoint=08> -> ?
+  setpoint now: 13
+  3B 08 <1 bytes of 08> -> 7F 3B 12
+  3B 08 <2 bytes of 08> -> 7F 3B 12
+  3B 08 <4 bytes of 08> -> 7F 3B 12
+  3B 08 <8 bytes of 08> -> 7F 3B 12
+== stage 3: short writes to records 20/21/A1 variants (1..4 bytes of their own first bytes)
+== stage 4: blind sweep of unknown identifiers, 1..4 zero bytes, stop at first acceptance
+  no identifier accepted a 1-4 byte write
+final setpoint byte: 13

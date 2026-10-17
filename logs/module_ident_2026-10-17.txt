@@ -1,0 +1,40 @@
+########## ABS
+adapter: ELM327 v2.3 @ 115200  battery 13.6V
+== ABS (ABS/ESP) ==
+  CAN: ['661017E']
+  connected via can
+########## HVAC
+adapter: ELM327 v2.3 @ 115200  battery 13.6V
+== HVAC (climate control) ==
+  CAN: ['672017E']
+  connected via can
+########## AT
+adapter: ELM327 v2.3 @ 115200  battery 13.7V
+== AT (automatic transmission) ==
+  CAN: ['7E9017E']
+  connected via can
+  part number  5A 9A FF FF
+  KWP readDTCByStatus    58 00  -> no codes
+########## 4WD
+adapter: ELM327 v2.3 @ 115200  battery 13.7V
+== 4WD (4WD control) ==
+  CAN: ['NO DATA']
+  K-line fast: ['BUS INIT: OK']
+  connected via kline
+########## SRS
+adapter: ELM327 v2.3 @ 115200  battery 13.6V
+== SRS (airbag) ==
+  CAN: ['NO DATA']
+  K-line fast: ['BUS INIT: OK']
+  connected via kline
+########## BCM
+adapter: ELM327 v2.3 @ 115200  battery 13.6V
+== BCM (body control) ==
+  CAN: ['671017E']
+  connected via can
+  KWP readDTCByStatus    58 01 91 50 20  -> ['B1150 status 20']
+########## IPC
+adapter: ELM327 v2.3 @ 115200  battery 13.5V
+== IPC (combination meter) ==
+  CAN: ['674017E']
+  connected via can

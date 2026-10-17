@@ -1,0 +1,23 @@
+adapter: ELM327 v2.3 @ 115200  battery 13.6V
+  ENGINE      via can
+  AT          via can
+  ABS         via can
+  4WD         via kline
+  PS          no answer
+  CCM         no answer
+  BCM         via can
+  HVAC        via can
+  HVAC2       no answer
+  AC          no answer
+  SRS         via kline
+  SRSH        no answer
+  IPC         via can
+  KLS         no answer
+  ALC         no answer
+  ICM         no answer
+  IMMO        no answer
+  TPMS        no answer
+  OCM         no answer
+  POWERTRAIN  no answer
+
+reachable modules: ENGINE, AT, ABS, 4WD, BCM, HVAC, SRS, IPC

@@ -1,0 +1,19 @@
+== sessions
+  1081 -> 7F 10 12
+  1085 -> 7F 10 12
+  1086 -> 7F 10 12
+  1089 -> 7F 10 12
+  1092 -> 7F 10 12
+  10C0 -> 7F 10 12
+  10FA -> 7F 10 12
+== A5 variants (no session)
+  A5 00 80 00 FF 00 -> 7F A5 12
+  A5 00 FF 00 00 00 -> 7F A5 12
+  A5 00 80 FF -> 7F A5 12
+  A5 00 -> 7F A5 12
+== IO local id enumeration with 'return control to ECU' (30 id 00)
+  30 A0 00 -> 7F 30 22
+  ids answering: A0
+== MIL lamp IO test (harmless)
+  on  -> 7F 30 12
+  off -> 7F 30 12

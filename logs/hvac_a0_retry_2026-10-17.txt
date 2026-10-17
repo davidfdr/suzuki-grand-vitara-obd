@@ -1,0 +1,2 @@
+01:48:24 30 A0 08 00 00 00 00 -> 7F 30 22  [set=13 mode=20 fan=20 intake=20 airmixV=E4 modeV=E4 freshV=C0 fanV=31 bits=09]
+done

@@ -1,0 +1,56 @@
+adapter: ELM327 v2.3 @ 115200  battery 14.0V
+== HVAC (climate control) ==
+  CAN: ['672017E']
+  connected via can
+  id 8A        5A 8A 33 39 35 32 30 2D 37 39 4B 30 2A 00 00 00 00 00  '39520-79K0*.....'
+  KWP readDTCByStatus    58 02 95 31 20 95 04 61  -> ['B1531 20=history', 'B1504 61=current/high']
+  live data (21 08):
+    Set temperature            23.5 C
+    Mode switch                auto
+    Fan switch                 off
+    Air intake switch          auto
+    Engine rpm                 640 rpm
+    Vehicle speed              0 km/h
+    Coolant temperature        102 C
+    Outside air temperature    42.5 C
+    Cabin air temperature      27.0 C
+    Sun load                   0 W/m2
+    Evaporator temperature     18.5 C
+    Refrigerant pressure       686 kPa
+    Air mix position           4.68 V
+    Mode position              4.56 V
+    Fresh air position         1.14 V
+    Fan desired voltage        0.0 V
+    A/C signal                 off
+    Blower                     off
+    Rear defogger              off
+    Compressor clutch          off
+    Engine run request         off
+adapter: ELM327 v2.3 @ 115200  battery 14.0V
+== ABS (ABS/ESP) ==
+  CAN: ['661017E']
+  connected via can
+  id 8A        5A 8A 35 36 31 30 30 2D 37 39 4B 31 2A 00 00 00 00 00  '56100-79K1*.....'
+  KWP readDTCByStatus    58 05 50 21 20 50 18 20 50 25 20 50 91 20 50 57 20  -> ['C1021 20=history', 'C1018 20=history', 'C1025 20=history', 'C1091 20=history', 'C1057 20=history']
+  live data (21 00):
+    Wheel speed front right    0 km/h
+    Wheel speed front left     0 km/h
+    Wheel speed rear right     0 km/h
+    Wheel speed rear left      0 km/h
+    G sensor (longitudinal)    +0.08 G
+    Battery voltage            14.0 V
+    Pump motor voltage         0.0 V
+    Master cylinder pressure   0.0 MPa
+    G sensor (lateral)         +0.00 G
+    Yaw rate                   +0.1 deg/s
+    Engine rpm                 648 rpm
+    Steering angle             -58 deg
+    Hill hold active           no
+    Brake switch               released
+    Stability control active   no
+    TCS brake control          no
+    TCS engine control         no
+    ESP OFF switch             released
+    Steering angle signal      non neutral
+    Hill hold fitted           yes
+    Cluster communication      normal

@@ -1,0 +1,352 @@
+3E -> 7E
+== which services exist? (empty/short requests: 11 = service unknown, 12/13 = exists but bad params)
+  10 -> 7F 10 11
+  27 -> 7F 27 11
+  2E -> 7F 2E 11
+  2F -> 7F 2F 11
+  30 -> 7F 30 12
+  31 -> 7F 31 11
+  3B -> 7F 3B 12
+  3D -> 7F 3D 11
+  A5 -> 7F A5 11
+  B0 -> 7F B0 11
+  B1 -> 7F B1 11
+  B2 -> 7F B2 11
+  B3 -> 7F B3 11
+  B4 -> 7F B4 11
+  B5 -> 7F B5 11
+  B6 -> 7F B6 11
+  B7 -> 7F B7 11
+  B8 -> 7F B8 11
+  B9 -> 7F B9 11
+  BA -> 7F BA 11
+  BB -> 7F BB 11
+  BC -> 7F BC 11
+  BD -> 7F BD 11
+  BE -> 7F BE 11
+  BF -> 7F BF 11
+== IO id enumeration, return-control form 30 id 00
+  30 81 00 -> 70 81 00
+  30 A0 00 -> 70 A0 00
+  ids answering: 81 A0
+  baseline                     setpoint=13 mode sw=20 fan sw=20 intake sw=20 airmix V=9B mode pos V=B1 fresh pos V=37 fan V=2B bits=09
+30 81 07 08 -> 7F 30 12
+30 81 07 08 00 -> 7F 30 12
+30 81 07 00 08 -> 7F 30 12
+30 81 07 08 00 00 00 -> 7F 30 12
+30 81 08 08 -> 7F 30 12
+30 81 05 08 -> 7F 30 12
+30 A0 07 08 -> 7F 30 12
+30 A0 07 08 00 -> 7F 30 12
+30 A0 07 00 08 -> 7F 30 12
+30 A0 07 08 00 00 00 -> 7F 30 12
+30 A0 08 08 -> 7F 30 12
+30 A0 05 08 -> 7F 30 12
+== control-parameter enumeration 30 <id> <cp> (no data)
+  30 81 00 -> 70 81 00
+  (id 81 done)
+  30 A0 00 -> 70 A0 00
+  (id A0 done)
+== data-length probe with cp=07 (zeros), lengths 1..10
+  30 81 07 +4 zero bytes -> 7F 30 22
+  (id 81 done)
+  (id A0 done)
+release -> 70 81 00 70 A0 00
+baseline setpoint byte: 13
+== 30 81 07 <b0> <b1> <b2> <b3>: sweep single-bit / value patterns
+  30 81 07 00 80 00 00 -> 7F 30 12
+  30 81 07 40 00 00 00 -> 7F 30 12
+  30 81 07 00 40 00 00 -> 7F 30 12
+  30 81 07 20 00 00 00 -> 7F 30 12
+  30 81 07 00 20 00 00 -> 7F 30 12
+  30 81 07 10 00 00 00 -> 7F 30 12
+  30 81 07 00 10 00 00 -> 7F 30 12
+  30 81 07 08 00 00 00 -> 7F 30 12
+  30 81 07 00 08 00 00 -> 7F 30 12
+  30 81 07 04 00 00 00 -> 7F 30 12
+  30 81 07 00 04 00 00 -> 7F 30 12
+  30 81 07 02 00 00 00 -> 7F 30 12
+  30 81 07 00 02 00 00 -> 7F 30 12
+  30 81 07 01 00 00 00 -> 7F 30 12
+  30 81 07 00 01 00 00 -> 7F 30 12
+  30 81 07 FF 00 00 00 -> 7F 30 12
+  30 81 07 00 FF 00 00 -> 7F 30 12
+  30 81 07 80 08 00 00 -> 7F 30 12
+  30 81 07 80 80 08 00 -> 7F 30 12
+  30 81 07 FF 08 00 00 -> 7F 30 12
+  30 81 07 08 08 08 08 -> 7F 30 12
+  30 81 07 00 80 08 00 -> 7F 30 12
+  all remaining patterns -> 7F 30 22 (conditions not correct)
+== same with id A0
+  30 A0 07 80 00 00 00 -> 7F 30 12
+  30 A0 07 00 80 00 00 -> 7F 30 12
+  30 A0 07 00 00 80 00 -> 7F 30 12
+  30 A0 07 00 00 00 80 -> 7F 30 12
+  30 A0 07 80 08 00 00 -> 7F 30 12
+  30 A0 07 80 80 08 00 -> 7F 30 12
+final setpoint byte: 13
+== full service sweep on HVAC (skipping 11 reset, 14 clear, 28/29 comm control, 34-37 transfer)
+  18 -> 7F 18 12
+  1A -> 7F 1A 12
+  21 -> 7F 21 12
+  30 -> 7F 30 12
+  3B -> 7F 3B 12
+services that exist: 18 1A 21 30 3B
+== 3B <lid> with no data, all 256 lids (responses other than 7F 3B 12)
+== 1A <id> identification sweep (reads only)
+  1A 8A -> 012 | 0: 5A 8A 33 39 35 32 | 1: 30 2D 37 39 4B 30 2A | 2: 00 00 00 00 00 00 00
+  1A 8E -> 012 | 0: 5A 8E 33 39 35 32 | 1: 30 2D 37 39 4B 30 00 | 2: 00 00 00 00 00 00 00
+== 18 variants
+  18 00 FF 00 -> 008 | 0: 58 02 95 31 20 95 | 1: 04 61 00 00 00 00 00
+  18 01 FF 00 -> 7F 18 12
+  18 02 FF 00 -> 7F 18 12
+  18 00 00 00 -> 7F 18 12
+  18 03 FF 00 -> 7F 18 12
+== engine off, ignition on, panel off
+ATRV 13.0V  3E -> NO DATA
+state: None
+  30 81 07 80 00 08 00 -> NO DATA
+  30 81 07 00 00 08 00 -> NO DATA
+  30 81 07 80 00 00 00 -> NO DATA
+  30 A0 07 80 00 08 00 -> NO DATA
+  30 A0 07 00 00 00 00 -> NO DATA
+== key ON, engine off, panel off
+ATRV 12.7V  3E -> 7E
+state: set=13 mode=20 fan=00 intake=20 bits=00 rpm=0
+  30 81 07 80 00 08 00 -> 7F 30 31
+  30 81 07 00 00 08 00 -> 70 81 07
+   ACCEPTED. changed: none
+   release -> 70 81 00
+  30 81 07 80 00 00 00 -> 7F 30 31
+  30 81 07 00 00 00 00 -> 70 81 07
+   ACCEPTED. changed: [39] B1->B0
+   release -> 70 81 00
+  30 A0 07 80 00 08 00 -> 7F 30 12
+  30 A0 07 00 00 00 00 -> 7F 30 12
+  30 81 00 -> 70 81 00
+  30 A0 00 -> 70 A0 00
+== valid byte0 values for 30 81 07 b0 00 00 00
+  b0=01 -> 7F 30 12
+  b0=02 -> 7F 30 12
+  b0=03 -> 7F 30 12
+  b0=04 -> 7F 30 12
+  b0=05 -> 7F 30 12
+  b0=06 -> 7F 30 12
+  b0=07 -> 7F 30 12
+  b0=08 -> 7F 30 12
+  b0=09 -> 7F 30 12
+  b0=0A -> 7F 30 12
+  b0=0B -> 7F 30 12
+  b0=0C -> 7F 30 12
+  b0=0D -> 7F 30 12
+  b0=0E -> 7F 30 12
+  b0=0F -> 7F 30 12
+  b0=10 -> 7F 30 12
+  b0=11 -> 7F 30 12
+  b0=12 -> 7F 30 12
+  b0=13 -> 7F 30 12
+  b0=14 -> 7F 30 12
+  b0=15 -> 7F 30 12
+  b0=16 -> 7F 30 12
+  b0=17 -> 7F 30 12
+  b0=18 -> 7F 30 12
+  b0=19 -> 7F 30 12
+  b0=1A -> 7F 30 12
+  b0=1B -> 7F 30 12
+  b0=1C -> 7F 30 12
+  b0=1D -> 7F 30 12
+  b0=1E -> 7F 30 12
+  b0=1F -> 7F 30 12
+  b0=20 -> 7F 30 12
+  b0=21 -> 7F 30 12
+  b0=22 -> 7F 30 12
+  b0=23 -> 7F 30 12
+  b0=24 -> 7F 30 12
+  b0=25 -> 7F 30 12
+  b0=26 -> 7F 30 12
+  b0=27 -> 7F 30 12
+  b0=28 -> 7F 30 12
+  b0=29 -> 7F 30 12
+  b0=2A -> 7F 30 12
+  b0=2B -> 7F 30 12
+  b0=2C -> 7F 30 12
+  b0=2D -> 7F 30 12
+  b0=2E -> 7F 30 12
+  b0=2F -> 7F 30 12
+  b0=30 -> 7F 30 12
+  b0=31 -> 7F 30 12
+  b0=32 -> 7F 30 12
+  b0=33 -> 7F 30 12
+  b0=34 -> 7F 30 12
+  b0=35 -> 7F 30 12
+  b0=36 -> 7F 30 12
+  b0=37 -> 7F 30 12
+  b0=38 -> 7F 30 12
+  b0=39 -> 7F 30 12
+  b0=3A -> 7F 30 12
+  b0=3B -> 7F 30 12
+  b0=3C -> 7F 30 12
+  b0=3D -> 7F 30 12
+  b0=3E -> 7F 30 12
+  b0=3F -> 7F 30 12
+  b0=40 -> 7F 30 12
+  b0=41 -> 7F 30 12
+  b0=42 -> 7F 30 12
+  b0=43 -> 7F 30 12
+  b0=44 -> 7F 30 12
+  b0=45 -> 7F 30 12
+  b0=46 -> 7F 30 12
+  b0=47 -> 7F 30 12
+  b0=48 -> 7F 30 12
+  b0=49 -> 7F 30 12
+  b0=4A -> 7F 30 12
+  b0=4B -> 7F 30 12
+  b0=4C -> 7F 30 12
+  b0=4D -> 7F 30 12
+  b0=4E -> 7F 30 12
+  b0=4F -> 7F 30 12
+  b0=50 -> 7F 30 12
+  b0=51 -> 7F 30 12
+  b0=52 -> 7F 30 12
+  b0=53 -> 7F 30 12
+  b0=54 -> 7F 30 12
+  b0=55 -> 7F 30 12
+  b0=56 -> 7F 30 12
+  b0=57 -> 7F 30 12
+  b0=58 -> 7F 30 12
+  b0=59 -> 7F 30 12
+  b0=5A -> 7F 30 12
+  b0=5B -> 7F 30 12
+  b0=5C -> 7F 30 12
+  b0=5D -> 7F 30 12
+  b0=5E -> 7F 30 12
+  b0=5F -> 7F 30 12
+  b0=60 -> 7F 30 12
+  b0=61 -> 7F 30 12
+  b0=62 -> 7F 30 12
+  b0=63 -> 7F 30 12
+  b0=64 -> 7F 30 12
+  b0=65 -> 7F 30 12
+  b0=66 -> 7F 30 12
+  b0=67 -> 7F 30 12
+  b0=68 -> 7F 30 12
+  b0=69 -> 7F 30 12
+  b0=6A -> 7F 30 12
+  b0=6B -> 7F 30 12
+  b0=6C -> 7F 30 12
+  b0=6D -> 7F 30 12
+  b0=6E -> 7F 30 12
+  b0=6F -> 7F 30 12
+  b0=70 -> 7F 30 12
+  b0=71 -> 7F 30 12
+  b0=72 -> 7F 30 12
+  b0=73 -> 7F 30 12
+  b0=74 -> 7F 30 12
+  b0=75 -> 7F 30 12
+  b0=76 -> 7F 30 12
+  b0=77 -> 7F 30 12
+  b0=78 -> 7F 30 12
+  b0=79 -> 7F 30 12
+  b0=7A -> 7F 30 12
+  b0=7B -> 7F 30 12
+  b0=7C -> 7F 30 12
+  b0=7D -> 7F 30 12
+  b0=7E -> 7F 30 12
+  b0=7F -> 7F 30 12
+  valid byte0: 00
+== effect of each valid byte0 with value bytes (FF,00) and (00,FF) and (08,08)
+  base: set=13 mode=20 fan=00 intake=20 airmixV=EA modeV=B1 freshV=37 fanV=00 bits=00
+  30 81 07 00 00 FF 00 -> 70 81 07 | after 3s: none
+  30 81 07 00 00 00 FF -> 70 81 07 | after 3s: none
+  30 81 07 00 00 08 08 -> 70 81 07 | after 3s: [22] 9E->9F, [26] 45->44
+  final: set=13 mode=20 fan=00 intake=20 airmixV=EA modeV=B1 freshV=37 fanV=00 bits=00 | vs base: [22] 9E->9F, [26] 45->44
+== A0 under key-on/engine-off: control params and lengths
+  30 A0 00 -> 70 A0 00
+  30 A0 08 +4 zeros -> 7F 30 22
+== 81 byte1 range check with byte0=00
+  30 81 07 00 01 00 00 -> 7F 30 12
+  30 81 07 00 02 00 00 -> 7F 30 12
+  30 81 07 00 04 00 00 -> 7F 30 12
+  30 81 07 00 08 00 00 -> 7F 30 12
+  30 81 07 00 10 00 00 -> 7F 30 12
+  30 81 07 00 20 00 00 -> 7F 30 12
+  30 81 07 00 40 00 00 -> 7F 30 12
+  30 81 07 00 80 00 00 -> 7F 30 12
+  30 81 07 00 FF 00 00 -> 7F 30 12
+== 81 with 5 and 6 data bytes
+  30 81 07 00 00 00 00 00 -> 7F 30 12
+  30 81 07 00 00 00 00 00 00 -> 7F 30 12
+  30 81 07 00 00 00 -> 7F 30 12
+release: 70 81 00 70 A0 00
+== key ON, engine off, panel ON
+  base: set=13 mode=20 fan=20 intake=20 airmixV=EA modeV=E4 freshV=C0 fanV=31 bits=01
+-- A0 long-term adjustment
+  30 A0 08 00 00 00 00 -> 7F 30 22
+  30 A0 08 00 00 08 00 -> 7F 30 12
+  30 A0 08 08 00 00 00 -> 7F 30 12
+  30 A0 08 00 00 00 08 -> 7F 30 12
+  30 A0 07 00 00 00 00 -> 7F 30 12
+-- 81 short-term override, value sweeps on bytes 2 and 3 (5 s each)
+  30 81 07 00 00 FF 00 -> 70 81 07
+    after 5s: none
+    release -> 70 81 00
+  30 81 07 00 00 00 FF -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->72
+    release -> 70 81 00
+  30 81 07 00 00 80 80 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->72
+    release -> 70 81 00
+  30 81 07 00 00 08 00 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->73
+    release -> 70 81 00
+  30 81 07 00 00 00 08 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->74
+    release -> 70 81 00
+  30 81 07 00 00 08 08 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->75
+    release -> 70 81 00
+  30 81 07 00 00 01 01 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->75
+    release -> 70 81 00
+  30 81 07 00 00 20 20 -> 70 81 07
+    after 5s: [23] 83->82, [25] 70->76
+    release -> 70 81 00
+  final: set=13 mode=20 fan=20 intake=20 airmixV=EA modeV=E4 freshV=C0 fanV=31 bits=01 | vs base: [23] 83->82, [25] 70->76
+== A0 08 format: single bit set in each of the 4 bytes (12 = invalid, 22 = cond, 31 = range, 70 = accepted)
+  byte0: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=22 b7=22
+  byte1: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+  byte2: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+  byte3: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+== A0 08 byte values 01..0F in byte2 and byte3
+  byte2: 01:12 02:12 03:12 04:12 05:12 06:12 07:12 08:12 09:12 0A:12 0B:12 0C:12 0D:12 0E:12 0F:12
+  byte3: 01:12 02:12 03:12 04:12 05:12 06:12 07:12 08:12 09:12 0A:12 0B:12 0C:12 0D:12 0E:12 0F:12
+== A0 with other control params + 4 zero bytes
+  30 A0 08 00 00 00 00 -> 7F 30 22
+release: 70 A0 00 70 81 00
+== A0 08 with byte0 = 40 / 80 / C0: single bits in bytes 1-3
+  byte0=40 alone -> 22
+    byte1: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte2: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte3: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+  byte0=80 alone -> 22
+    byte1: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte2: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte3: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+  byte0=C0 alone -> 22
+    byte1: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte2: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+    byte3: b0=12 b1=12 b2=12 b3=12 b4=12 b5=12 b6=12 b7=12
+== A0 08 byte0 full range (which values are not 12)
+   00:22 40:22 80:22 C0:22
+release: 70 A0 00
+== engine running, panel on
+ATRV 13.6V 3E -> 7E
+  base: set=13 mode=20 fan=20 intake=20 airmixV=E4 modeV=E4 freshV=C0 fanV=31 bits=09 rpm=640
+  30 A0 08 00 00 00 00 -> 7F 30 22
+  30 A0 08 40 00 00 00 -> 7F 30 22
+  30 A0 08 80 00 00 00 -> 7F 30 22
+  30 A0 08 C0 00 00 00 -> 7F 30 22
+-- 81 with engine running, for completeness
+  30 81 07 00 00 00 00 -> 7F 30 22
+  30 81 07 00 00 08 00 -> 7F 30 22
+  final: set=13 mode=20 fan=20 intake=20 airmixV=E4 modeV=E4 freshV=C0 fanV=31 bits=09 | vs base: none

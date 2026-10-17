@@ -1,0 +1,51 @@
+adapter: ELM327 v2.3 @ 115200  battery 12.4V
+== BCM (body control) ==
+  CAN: ['671017E']
+  connected via can
+  id 8A        5A 8A 33 36 37 37 30 2D 37 36 4B 39 2A 00 00 00 00 00  '36770-76K9*.....'
+  KWP readDTCByStatus    58 01 91 50 20  -> ['B1150 20=history']
+  live data (21 08):
+    Outside temperature        42 C
+    Battery voltage            12.4 V
+    Vehicle speed              0 km/h
+    Engine rpm                 0 rpm
+    Driver door                closed
+    Passenger door             closed
+    Auto light switch          off
+    Front fog light switch     on
+    Door key switch            -
+    Door lock switch           -
+    Key in ignition            key in
+    Headlight switch           on
+    Tail light switch          on
+    Driver seatbelt            fastened
+    Brake fluid level          normal
+    Parking brake              off
+    Charge light               on
+    Oil pressure switch        on
+    A/C switch                 off
+    Ignition switch            on
+    ACC switch                 on
+    Rear wiper                 off
+    Rear washer switch         off
+    Security alarm             disabled
+  local identifiers (21 xx) with a positive answer:
+    21 08: 52 9E FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 00 00 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 00 00 02 FF FF 00 80 03 01 0C 05 00 FF FF FF FF FF 00 01 FF FF
+    21 C0: 70 47 19 02
+adapter: ELM327 v2.3 @ 115200  battery 12.4V
+== IPC (combination meter) ==
+  CAN: ['674017E']
+  connected via can
+  id 8A        5A 8A 33 34 31 31 30 2D 37 39 4B 31 2A 00 00 00 00 04  '34110-79K1*.....'
+  KWP readDTCByStatus    58 05 98 10 20 C1 00 20 C1 21 20 C1 40 20 C1 64 20  -> ['B1810 20=history', 'U0100 20=history', 'U0121 20=history', 'U0140 20=history', 'U0164 20=history']
+  live data (21 01):
+    Battery voltage            12.2 V
+    Engine rpm                 0 rpm
+  local identifiers (21 xx) with a positive answer:
+    21 01: 9B 4D FF FF FF FF FF FF FF 9C 9C A3 00 02 E7 0C FF 00 7D 00 FF 00 00 A5 FF FF FF FF FF FF
+    21 02: A1 F9 79 F6 1F 00 00 0A
+    21 20: 42 00 03 08 E0 03 06 00 FF FF FF
+    21 21: 25 06 03 00 FF FF FF FF FF FF FF
+    21 22: 27 10 00 00 00 00 00 00
+    21 23: 00 01 04 00 00 00 00 00
+    21 A1: 0A 04 08 08 14 14 3D 02 00 00 00 00 00 00 00 00 00 00 00 00 FF FF FF FF FF FF FF FF FF FF
